@@ -2,7 +2,7 @@ import 'package:streams_in_floor/data/datasources/db/dao/teacherextends_dao.dart
 
 import 'dao/teacher_dao.dart';
 import 'database.dart';
-
+/*
 class DatabaseService {
   static AppDatabase? _db;
 
@@ -48,3 +48,4 @@ class DatabaseService {
   }
 }
 
+*/

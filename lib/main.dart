@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:streams_in_floor/presentation/providers/database.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'data/datasources/db/database.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final db = await $FloorAppDatabase
+      .databaseBuilder('database.db')
+      .build();
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        appDatabaseProvider.overrideWithValue(db),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
