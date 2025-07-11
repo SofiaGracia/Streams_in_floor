@@ -5,37 +5,33 @@ import 'package:streams_in_floor/presentation/screens/form.dart';
 import 'package:streams_in_floor/presentation/widgets/teacher_widget.dart';
 
 import '../../../shared/utils/constants.dart';
+import '../teacher_list.dart';
 
-class TeacherListScreen extends ConsumerWidget {
-  const TeacherListScreen({super.key});
+class AsyncTeacherListScreen extends ConsumerWidget {
+  const AsyncTeacherListScreen({super.key});
+  
+  Widget _buildScreen(Widget passedChild){
+    return Scaffold(
+      body: Center(
+        child: passedChild,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final teachersAsync = ref.watch(teacherNotifierProvider);
 
-    return Scaffold(
-      appBar: AppBar(title: const Text(asyncNotifierTitleScreen)),
-      body: teachersAsync.when(
-        data: (teachers) => ListView.builder(
-          itemCount: teachers.length,
-          itemBuilder: (_, i) {
-            final t = teachers[i];
-            return TeacherWidget(name: t.name, dni: t.dni);
-          },
-        ),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
-      ),
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => FormScreen(),
-              ),
-            );
-          }),
+    return teachersAsync.when(
+        data: (teachers) {
+          return TeacherListScreen(teachers: teachers, titleScreen: asyncNotifierTitleScreen);
+        },
+        error: (e, stack) {
+          return _buildScreen(Text('Error: $e'));
+        },
+        loading: () {
+          return _buildScreen(const CircularProgressIndicator());
+        }
     );
   }
 }
