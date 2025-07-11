@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/domain/entities/teacher.dart';
-import 'package:streams_in_floor/presentation/providers/teacher_repository.dart';
+import 'package:streams_in_floor/presentation/providers/teacher/teacher_repository.dart';
 
 import '../widgets/save_form_button.dart';
 
