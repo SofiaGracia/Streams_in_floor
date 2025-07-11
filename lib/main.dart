@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/providers/database.dart';
-import 'package:streams_in_floor/presentation/screens/teacher/teacher_list.dart';
+import 'package:streams_in_floor/presentation/screens/teacher/teacher_async.dart';
 
 import 'data/datasources/db/database.dart';
 

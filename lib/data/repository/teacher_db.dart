@@ -8,6 +8,8 @@ class TeacherRepository {
 
   Future<List<Teacher>> getAllTeachers() => _dao.findAllTeachers();
 
+  Stream<List<Teacher>> getAllStreamedTeachers() => _dao.streamAllTeachers();
+
   Stream<List<String>> getDnisTeacher() => _dao.getDnisTeacher();
 
   Future<void> addTeacher(Teacher teacher) => _dao.insertTeacher(teacher);

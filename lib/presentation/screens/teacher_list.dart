@@ -20,7 +20,7 @@ class TeacherListScreen extends StatelessWidget {
       itemCount: teachers.length,
       itemBuilder: (_, i) {
       final t = teachers[i];
-      return TeacherWidget(name: t.name, dni: t.dni);
+      return TeacherWidget(teacher: t);
     },);
   }
 
