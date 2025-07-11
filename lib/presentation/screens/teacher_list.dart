@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:streams_in_floor/presentation/screens/form.dart';
 
 import '../providers/teacher_repository.dart';
 
@@ -26,6 +27,7 @@ class TeacherListScreen extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
       ),
+      floatingActionButton: FormScreen(),
     );
   }
 }
