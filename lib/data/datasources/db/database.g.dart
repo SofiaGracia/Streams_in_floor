@@ -100,7 +100,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `teacher` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `dni` TEXT NOT NULL)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `teacherextends` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `dni` TEXT NOT NULL, `name` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `teacherextends` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `dni` TEXT NOT NULL, `name` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -224,7 +224,6 @@ class _$TeacherExtendsDao extends TeacherExtendsDao {
             'teacherextends',
             (TeacherExtends item) => <String, Object?>{
                   'id': item.id,
-                  'name': item.name,
                   'dni': item.dni,
                   'name': item.name
                 },
@@ -235,7 +234,6 @@ class _$TeacherExtendsDao extends TeacherExtendsDao {
             ['id'],
             (TeacherExtends item) => <String, Object?>{
                   'id': item.id,
-                  'name': item.name,
                   'dni': item.dni,
                   'name': item.name
                 },
@@ -246,7 +244,6 @@ class _$TeacherExtendsDao extends TeacherExtendsDao {
             ['id'],
             (TeacherExtends item) => <String, Object?>{
                   'id': item.id,
-                  'name': item.name,
                   'dni': item.dni,
                   'name': item.name
                 },
