@@ -4,6 +4,6 @@ import '../../data/datasources/db/database.dart';
 import '../../data/datasources/db/database_service.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>((ref) {
-  throw UnimplementedError(); // El sobreescriuràs al `main()`
+  throw UnimplementedError(); // Override at `main()`
 });
 

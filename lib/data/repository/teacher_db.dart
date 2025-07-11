@@ -12,5 +12,6 @@ class TeacherRepository {
 
   Future<void> addTeacher(Teacher teacher) => _dao.insertTeacher(teacher);
 
-// etc.
+  Future<int> deleteTeacher(Teacher teacher) => _dao.deleteTeacher(teacher);
+
 }
