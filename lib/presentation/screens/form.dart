@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/save_form_button.dart';
+
 class FormScreen extends ConsumerStatefulWidget {
   //We may need a onCreate
 
@@ -69,6 +71,10 @@ class _FormScreenState extends ConsumerState<FormScreen> {
                     icon: Icons.account_circle_outlined),
                 const SizedBox(height: 12),
                 //Save teacher button
+                SaveTeacherButton(
+                  onPressed: ,
+                  text: 'Save',
+                )
               ],
             )),
       ),

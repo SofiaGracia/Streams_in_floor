@@ -27,7 +27,16 @@ class TeacherListScreen extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
       ),
-      floatingActionButton: FormScreen(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+          onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FormScreen(),
+          ),
+        );
+      }),
     );
   }
 }
