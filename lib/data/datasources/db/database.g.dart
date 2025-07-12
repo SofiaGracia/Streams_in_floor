@@ -202,7 +202,7 @@ class _$TeacherDao extends TeacherDao {
   @override
   Stream<List<Teacher>> findTeachersByName(String name) {
     return _queryAdapter.queryListStream(
-        'SELECT * FROM teacher WHERE name = ?1',
+        'SELECT * FROM teacher WHERE name LIKE ?1 || \"%\"',
         mapper: (Map<String, Object?> row) => Teacher(
             id: row['id'] as int?,
             name: row['name'] as String,
