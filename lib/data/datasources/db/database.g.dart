@@ -100,7 +100,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `teacher` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `dni` TEXT NOT NULL)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `teacherextends` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `dni` TEXT NOT NULL, `name` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `teacherextends` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `dni` TEXT NOT NULL, `name` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -189,6 +189,30 @@ class _$TeacherDao extends TeacherDao {
   }
 
   @override
+  Stream<List<Teacher>> streamAllTeachers() {
+    return _queryAdapter.queryListStream('SELECT * FROM teacher',
+        mapper: (Map<String, Object?> row) => Teacher(
+            id: row['id'] as int?,
+            name: row['name'] as String,
+            dni: row['dni'] as String),
+        queryableName: 'teacher',
+        isView: false);
+  }
+
+  @override
+  Stream<List<Teacher>> findTeachersByName(String name) {
+    return _queryAdapter.queryListStream(
+        'SELECT * FROM teacher WHERE name LIKE ?1 || \"%\"',
+        mapper: (Map<String, Object?> row) => Teacher(
+            id: row['id'] as int?,
+            name: row['name'] as String,
+            dni: row['dni'] as String),
+        arguments: [name],
+        queryableName: 'teacher',
+        isView: false);
+  }
+
+  @override
   Stream<List<String>> getDnisTeacher() {
     return _queryAdapter.queryListStream('SELECT dni FROM teacher',
         mapper: (Map<String, Object?> row) => row.values.first as String,
@@ -224,7 +248,6 @@ class _$TeacherExtendsDao extends TeacherExtendsDao {
             'teacherextends',
             (TeacherExtends item) => <String, Object?>{
                   'id': item.id,
-                  'name': item.name,
                   'dni': item.dni,
                   'name': item.name
                 },
@@ -235,7 +258,6 @@ class _$TeacherExtendsDao extends TeacherExtendsDao {
             ['id'],
             (TeacherExtends item) => <String, Object?>{
                   'id': item.id,
-                  'name': item.name,
                   'dni': item.dni,
                   'name': item.name
                 },
@@ -246,7 +268,6 @@ class _$TeacherExtendsDao extends TeacherExtendsDao {
             ['id'],
             (TeacherExtends item) => <String, Object?>{
                   'id': item.id,
-                  'name': item.name,
                   'dni': item.dni,
                   'name': item.name
                 },

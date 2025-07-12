@@ -8,7 +8,13 @@ abstract class TeacherDao {
 
   @Query('SELECT * FROM teacher WHERE id = :id')
   Stream<Teacher?> findTeacherById(int id);
-  
+
+  @Query('SELECT * FROM teacher')
+  Stream<List<Teacher>> streamAllTeachers();
+
+  @Query('SELECT * FROM teacher WHERE name LIKE :name || "%"')
+  Stream<List<Teacher>> findTeachersByName(String name);
+
   @Query('SELECT dni FROM teacher')
   Stream<List<String>> getDnisTeacher();
 
