@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/entities/teacher.dart';
-
 class SearchWidget extends ConsumerStatefulWidget {
-  final Function(List<Teacher> teachers) onSearchaListChanged;
+  final Function(String value) onValueSearched;
 
-  const SearchWidget({super.key, required this.onSearchaListChanged});
+  const SearchWidget({super.key, required this.onValueSearched});
 
   @override
   SearchWidgetState createState() => SearchWidgetState();
@@ -46,7 +44,7 @@ class SearchWidgetState extends ConsumerState<SearchWidget> {
                           child: Icon(Icons.search_outlined)),
                     ),
                     onChanged: (value) {
-
+                      widget.onValueSearched(value);
                     },
                   ))
                 ],

@@ -46,12 +46,12 @@ class _NavigationBarAppState extends State<NavigationBarApp> {
           NavigationDestination(
             selectedIcon: Icon(Icons.list),
             icon: Icon(Icons.list_outlined),
-            label: 'ListStream',
+            label: 'ListFuture',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.list),
             icon: Icon(Icons.list_outlined),
-            label: 'ListFuture',
+            label: 'ListStream',
           ),
         ],
       ),
