@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:streams_in_floor/presentation/providers/teacher/teacher_async_notifier.dart';
 import 'package:streams_in_floor/presentation/providers/teacher/teacher_stream.dart';
 
 import '../../../shared/utils/constants.dart';
@@ -23,7 +22,7 @@ class StreamTeacherListScreen extends ConsumerWidget {
 
     return teachersAsync.when(
         data: (teachers) {
-          return TeacherListScreen(teachers: teachers, titleScreen: asyncNotifierTitleScreen);
+          return TeacherListScreen(teachers: teachers, titleScreen: streamNotifierTitleScreen);
         },
         error: (e, stack) {
           return _buildScreen(Text('Error: $e'));
