@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/providers/database.dart';
 import 'package:streams_in_floor/presentation/screens/teacher/teacher_async.dart';
+import 'package:streams_in_floor/presentation/widgets/navigation_bar.dart';
 
 import 'data/datasources/db/database.dart';
 
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: AsyncTeacherListScreen(),
+      home: NavigationBarApp(),
     );
   }
 }
