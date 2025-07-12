@@ -200,6 +200,19 @@ class _$TeacherDao extends TeacherDao {
   }
 
   @override
+  Stream<List<Teacher>> findTeachersByName(String name) {
+    return _queryAdapter.queryListStream(
+        'SELECT * FROM teacher WHERE name = ?1',
+        mapper: (Map<String, Object?> row) => Teacher(
+            id: row['id'] as int?,
+            name: row['name'] as String,
+            dni: row['dni'] as String),
+        arguments: [name],
+        queryableName: 'teacher',
+        isView: false);
+  }
+
+  @override
   Stream<List<String>> getDnisTeacher() {
     return _queryAdapter.queryListStream('SELECT dni FROM teacher',
         mapper: (Map<String, Object?> row) => row.values.first as String,

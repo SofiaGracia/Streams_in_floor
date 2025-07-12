@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:streams_in_floor/presentation/screens/teacher/teacher_search.dart';
 
 import '../screens/teacher/teacher_async.dart';
 import '../screens/teacher/teacher_stream.dart';
@@ -18,6 +19,7 @@ class _NavigationBarAppState extends State<NavigationBarApp> {
   Widget build(BuildContext context) {
 
     final List<Widget> _pages = [
+      SearchTeacher(),
       AsyncTeacherListScreen(),
       StreamTeacherListScreen(),
     ];
@@ -44,12 +46,12 @@ class _NavigationBarAppState extends State<NavigationBarApp> {
           NavigationDestination(
             selectedIcon: Icon(Icons.list),
             icon: Icon(Icons.list_outlined),
-            label: 'ListStream',
+            label: 'ListFuture',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.list),
             icon: Icon(Icons.list_outlined),
-            label: 'ListFuture',
+            label: 'ListStream',
           ),
         ],
       ),
