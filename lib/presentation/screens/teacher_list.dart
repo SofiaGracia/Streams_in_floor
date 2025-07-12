@@ -31,6 +31,7 @@ class TeacherListScreen extends StatelessWidget {
       appBar: AppBar(title: Text(titleScreen)),
       body: _buildList(teachers),
       floatingActionButton: FloatingActionButton(
+          heroTag: null,
           child: const Icon(Icons.add),
           onPressed: () {
             Navigator.push(
