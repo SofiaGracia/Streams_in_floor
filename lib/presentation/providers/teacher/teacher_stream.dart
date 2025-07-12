@@ -13,3 +13,8 @@ final teacherDnisStreamProvider = StreamProvider.autoDispose<List<String>>((ref)
   final repo = ref.watch(teacherRepositoryProvider);
   return repo.getDnisTeacher();
 });
+
+final teacherNameStreamProvider = StreamProvider.autoDispose.family<List<Teacher>, String>((ref, name){
+  final repo = ref.watch(teacherRepositoryProvider);
+  return repo.getStreamedTeachersByName(name);
+});

@@ -10,6 +10,8 @@ class TeacherRepository {
 
   Stream<List<Teacher>> getAllStreamedTeachers() => _dao.streamAllTeachers();
 
+  Stream<List<Teacher>> getStreamedTeachersByName(String name) => _dao.findTeachersByName(name);
+
   Stream<List<String>> getDnisTeacher() => _dao.getDnisTeacher();
 
   Future<void> addTeacher(Teacher teacher) => _dao.insertTeacher(teacher);
