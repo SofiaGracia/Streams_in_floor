@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/screens/form.dart';
 import 'package:streams_in_floor/presentation/widgets/teacher_widget.dart';
 
-import '../../domain/entities/teacher.dart';
-import '../providers/teacher/teacher_repository.dart';
+import '../../../domain/entities/teacher.dart';
+import '../../providers/teacher/teacher_repository.dart';
 
 class TeacherListScreen extends ConsumerWidget {
   final String titleScreen;
