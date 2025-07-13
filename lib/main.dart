@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/providers/database.dart';
 import 'package:streams_in_floor/presentation/screens/home_drawer.dart';
-import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_async.dart';
-import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_search.dart';
-import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_stream.dart';
-import 'package:streams_in_floor/presentation/widgets/navigation_bar.dart';
 
 import 'data/datasources/db/database.dart';
 
