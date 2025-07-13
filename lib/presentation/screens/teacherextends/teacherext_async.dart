@@ -1,13 +1,15 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:streams_in_floor/presentation/providers/teacher/teacher_async_notifier.dart';
+import 'package:streams_in_floor/presentation/screens/teacherextends/teacher_list.dart';
 
 import '../../../shared/utils/constants.dart';
-import 'teacher_list.dart';
+import '../../providers/teacherextends/teacherext_async_notifier.dart';
 
-class AsyncTeacherListScreen extends ConsumerWidget {
-  const AsyncTeacherListScreen({super.key});
-  
+class AsyncTeacherExtListScreen extends ConsumerWidget {
+  const AsyncTeacherExtListScreen({super.key});
+
   Widget _buildScreen(Widget passedChild){
     return Scaffold(
       body: Center(
@@ -18,11 +20,11 @@ class AsyncTeacherListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final teachersAsync = ref.watch(teacherNotifierProvider);
+    final teachersExtAsync = ref.watch(teacherExtNotifierProvider);
 
-    return teachersAsync.when(
+    return teachersExtAsync.when(
         data: (teachers) {
-          return TeacherListScreen(teachers: teachers, titleScreen: asyncNotifierTitleScreen);
+          return TeacherExtListScreen(teachers: teachers, titleScreen: asyncNotifierTitleScreen);
         },
         error: (e, stack) {
           return _buildScreen(Text('Error: $e'));

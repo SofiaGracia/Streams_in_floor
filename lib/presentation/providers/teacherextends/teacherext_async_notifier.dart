@@ -27,3 +27,6 @@ class TeacherExtNotifier extends AsyncNotifier<List<TeacherExtends>> {
     });
   }
 }
+
+final teacherExtNotifierProvider =
+AsyncNotifierProvider<TeacherExtNotifier, List<TeacherExtends>>(TeacherExtNotifier.new);

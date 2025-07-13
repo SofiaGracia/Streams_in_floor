@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/providers/teacher/teacher_stream.dart';
 
 import '../../../shared/utils/constants.dart';
-import '../teacher_list.dart';
+import 'teacher_list.dart';
 
 class StreamTeacherListScreen extends ConsumerWidget {
   const StreamTeacherListScreen({super.key});
