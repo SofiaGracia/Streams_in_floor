@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:streams_in_floor/presentation/screens/teacher/teacher_search.dart';
-
-import '../screens/teacher/teacher_async.dart';
-import '../screens/teacher/teacher_stream.dart';
 
 class NavigationBarApp extends StatefulWidget {
-  const NavigationBarApp({super.key});
+  final Widget searchScreen;
+  final Widget asyncScreen;
+  final Widget streamScreen;
+
+  const NavigationBarApp(
+      {super.key,
+      required this.searchScreen,
+      required this.asyncScreen,
+      required this.streamScreen});
 
   @override
   State<NavigationBarApp> createState() => _NavigationBarAppState();
@@ -17,11 +21,10 @@ class _NavigationBarAppState extends State<NavigationBarApp> {
 
   @override
   Widget build(BuildContext context) {
-
     final List<Widget> _pages = [
-      SearchTeacher(),
-      AsyncTeacherListScreen(),
-      StreamTeacherListScreen(),
+      widget.searchScreen,
+      widget.asyncScreen,
+      widget.streamScreen
     ];
 
     return Scaffold(
