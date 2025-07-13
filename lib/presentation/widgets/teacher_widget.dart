@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/entities/teacher.dart';
-import '../providers/teacher/teacher_repository.dart';
-
 class TeacherWidget extends ConsumerWidget {
-  final Teacher teacher;
+  final String name;
+  final String dni;
+  final Future<void> Function() onDelete;
 
-  const TeacherWidget({super.key, required this.teacher});
+  const TeacherWidget(
+      {super.key,
+      required this.name,
+      required this.dni,
+      required this.onDelete});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,12 +23,11 @@ class TeacherWidget extends ConsumerWidget {
             children: [
               Expanded(
                   child: Column(
-                children: [Text(teacher.name), Text(teacher.dni)],
+                children: [Text(name), Text(dni)],
               )),
               IconButton(
                   onPressed: () async {
-                    final repo = ref.read(teacherRepositoryProvider);
-                    await repo.deleteTeacher(teacher);
+                    await onDelete();
                   },
                   icon: Icon(Icons.delete))
             ],
