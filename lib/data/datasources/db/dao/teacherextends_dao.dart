@@ -13,6 +13,9 @@ abstract class TeacherExtendsDao {
   @Query('SELECT * FROM teacherextends')
   Stream<List<TeacherExtends>> streamAllTeacherExtends();
 
+  @Query('SELECT * FROM teacherextends WHERE name LIKE :name || "%"')
+  Stream<List<TeacherExtends>> findTeacherExtendsByName(String name);
+
   @Query('SELECT dni FROM teacherextends')
   Stream<List<String>> getDnisTeacherExtends();
 
