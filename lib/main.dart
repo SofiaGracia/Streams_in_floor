@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/providers/database.dart';
 import 'package:streams_in_floor/presentation/screens/teacher/teacher_async.dart';
+import 'package:streams_in_floor/presentation/screens/teacher/teacher_search.dart';
+import 'package:streams_in_floor/presentation/screens/teacher/teacher_stream.dart';
 import 'package:streams_in_floor/presentation/widgets/navigation_bar.dart';
 
 import 'data/datasources/db/database.dart';
@@ -9,9 +11,7 @@ import 'data/datasources/db/database.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final db = await $FloorAppDatabase
-      .databaseBuilder('database.db')
-      .build();
+  final db = await $FloorAppDatabase.databaseBuilder('database.db').build();
 
   runApp(
     ProviderScope(
@@ -22,6 +22,7 @@ void main() async {
     ),
   );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -31,11 +32,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: NavigationBarApp(),
+      home: NavigationBarApp(
+          searchScreen: SearchTeacher(),
+          asyncScreen: AsyncTeacherListScreen(),
+          streamScreen: StreamTeacherListScreen()),
     );
   }
 }
