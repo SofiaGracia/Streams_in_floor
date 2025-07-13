@@ -308,6 +308,17 @@ class _$TeacherExtendsDao extends TeacherExtendsDao {
   }
 
   @override
+  Stream<List<TeacherExtends>> streamAllTeacherExtends() {
+    return _queryAdapter.queryListStream('SELECT * FROM teacherextends',
+        mapper: (Map<String, Object?> row) => TeacherExtends(
+            id: row['id'] as int?,
+            name: row['name'] as String,
+            dni: row['dni'] as String),
+        queryableName: 'teacherextends',
+        isView: false);
+  }
+
+  @override
   Stream<List<String>> getDnisTeacherExtends() {
     return _queryAdapter.queryListStream('SELECT dni FROM teacherextends',
         mapper: (Map<String, Object?> row) => row.values.first as String,
