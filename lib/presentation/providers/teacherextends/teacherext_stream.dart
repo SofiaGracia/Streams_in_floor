@@ -7,3 +7,8 @@ final teacherExtendsStreamProvider = StreamProvider.autoDispose<List<TeacherExte
   final repo = ref.watch(teacherExtRepositoryProvider);
   return repo.getAllStreamedTeacherExtends();
 });
+
+final teacherExtNameStreamProvider = StreamProvider.autoDispose.family<List<TeacherExtends>, String>((ref, name){
+  final repo = ref.watch(teacherExtRepositoryProvider);
+  return repo.getStreamedTeacherExtendsByName(name);
+});
