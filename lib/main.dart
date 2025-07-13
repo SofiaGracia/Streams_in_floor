@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/providers/database.dart';
-import 'package:streams_in_floor/presentation/screens/teacher/teacher_async.dart';
-import 'package:streams_in_floor/presentation/screens/teacher/teacher_search.dart';
-import 'package:streams_in_floor/presentation/screens/teacher/teacher_stream.dart';
+import 'package:streams_in_floor/presentation/screens/home_drawer.dart';
 import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_async.dart';
 import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_search.dart';
 import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_stream.dart';
@@ -38,10 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: NavigationBarApp(
-          searchScreen: SearchTeacherExtends(),
-          asyncScreen: AsyncTeacherExtListScreen(),
-          streamScreen: StreamTeacherExtListScreen()),
+      home: const HomeWithDrawer(),
     );
   }
 }
