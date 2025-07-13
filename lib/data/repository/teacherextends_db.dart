@@ -8,6 +8,8 @@ class TeacherExtendsRepository {
 
   Future<List<TeacherExtends>> getAllTeachers() => _dao.findAllTeachersExtends();
 
+  Stream<List<TeacherExtends>> getAllStreamedTeacherExtends() => _dao.streamAllTeacherExtends();
+
   Stream<List<String>> getDnisTeacher() => _dao.getDnisTeacherExtends();
 
   Future<void> addTeacher(TeacherExtends teacher) => _dao.insertTeacherExtends(teacher);
