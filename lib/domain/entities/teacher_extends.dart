@@ -6,11 +6,14 @@ class TeacherExtends extends User {
   @PrimaryKey(autoGenerate: true)
   final int? id;
 
+  @override
+  final String name;
+
   final String dni;
 
   TeacherExtends({
     this.id,
-    required super.name,
+    required this.name,
     required this.dni,
   });
 
