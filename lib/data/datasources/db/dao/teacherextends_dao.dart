@@ -10,6 +10,9 @@ abstract class TeacherExtendsDao {
   @Query('SELECT * FROM teacherextends WHERE id = :id')
   Stream<TeacherExtends?> findTeacherExtendsById(int id);
 
+  @Query('SELECT * FROM teacherextends')
+  Stream<List<TeacherExtends>> streamAllTeacherExtends();
+
   @Query('SELECT dni FROM teacherextends')
   Stream<List<String>> getDnisTeacherExtends();
 
