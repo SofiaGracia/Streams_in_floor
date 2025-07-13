@@ -4,6 +4,9 @@ import 'package:streams_in_floor/presentation/providers/database.dart';
 import 'package:streams_in_floor/presentation/screens/teacher/teacher_async.dart';
 import 'package:streams_in_floor/presentation/screens/teacher/teacher_search.dart';
 import 'package:streams_in_floor/presentation/screens/teacher/teacher_stream.dart';
+import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_async.dart';
+import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_search.dart';
+import 'package:streams_in_floor/presentation/screens/teacherextends/teacherext_stream.dart';
 import 'package:streams_in_floor/presentation/widgets/navigation_bar.dart';
 
 import 'data/datasources/db/database.dart';
@@ -36,9 +39,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: NavigationBarApp(
-          searchScreen: SearchTeacher(),
-          asyncScreen: AsyncTeacherListScreen(),
-          streamScreen: StreamTeacherListScreen()),
+          searchScreen: SearchTeacherExtends(),
+          asyncScreen: AsyncTeacherExtListScreen(),
+          streamScreen: StreamTeacherExtListScreen()),
     );
   }
 }

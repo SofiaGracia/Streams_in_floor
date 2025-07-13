@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/domain/entities/teacher.dart';
+import 'package:streams_in_floor/domain/entities/teacher_extends.dart';
 import 'package:streams_in_floor/presentation/providers/teacher/teacher_repository.dart';
+import 'package:streams_in_floor/presentation/providers/teacherextends/teacherext_repository.dart';
 
 import '../widgets/save_form_button.dart';
 
 class FormScreen extends ConsumerStatefulWidget {
-  //We may need a onCreate
 
-  const FormScreen({super.key});
+  final bool isExtendedClass;
+
+  const FormScreen({super.key, required this.isExtendedClass});
 
   @override
   _FormScreenState createState() => _FormScreenState();
@@ -30,13 +33,24 @@ class _FormScreenState extends ConsumerState<FormScreen> {
   }
 
   Future<void> _saveNewTeacher() async {
-    final newTeacher = Teacher(
-      name: nameController.text.trim(),
-      dni: dniController.text.trim(),
-    );
 
-    final repo = ref.read(teacherRepositoryProvider);
-    await repo.addTeacher(newTeacher);
+    if(!widget.isExtendedClass){
+      final newTeacher = Teacher(
+        name: nameController.text.trim(),
+        dni: dniController.text.trim(),
+      );
+
+      final repo = ref.read(teacherRepositoryProvider);
+      await repo.addTeacher(newTeacher);
+    }else{
+      final newTeacherExtends = TeacherExtends(
+        name: nameController.text.trim(),
+        dni: dniController.text.trim(),
+      );
+
+      final repo = ref.read(teacherExtRepositoryProvider);
+      await repo.addTeacher(newTeacherExtends);
+    }
 
     if (mounted) Navigator.pop(context);
   }

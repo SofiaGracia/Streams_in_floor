@@ -44,7 +44,7 @@ class TeacherExtListScreen extends ConsumerWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => FormScreen(),
+                builder: (context) => FormScreen(isExtendedClass: true,),
               ),
             );
           }),
