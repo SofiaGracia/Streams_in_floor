@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:streams_in_floor/presentation/widgets/teacher_widget.dart';
 
 import '../../../shared/utils/constants.dart';
+import '../../providers/teacher/teacher_repository.dart';
 import '../../providers/teacher/teacher_stream.dart';
 import '../../widgets/search_bar.dart';
 
@@ -47,7 +48,14 @@ class SearchTeacherState extends ConsumerState<SearchTeacher> {
         itemCount: teachers.length,
         itemBuilder: (_, i) {
           final t = teachers[i];
-          return TeacherWidget(teacher: t);
+          return TeacherWidget(
+            name: t.name,
+            dni: t.dni,
+            onDelete: () async {
+              final repo = ref.read(teacherRepositoryProvider);
+              await repo.deleteTeacher(t);
+            },
+          );
         },
       ));
     }, error: (e, stack) {
